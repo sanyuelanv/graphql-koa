@@ -1,0 +1,30 @@
+{
+  "name": "graphql-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dep": "./node_modules/.bin/babel ./src --out-dir ./web -w",
+    "start": "supervisor ./web/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-redis": "^3.0.0",
+    "koa-router": "^7.2.0",
+    "koa-session": "^5.1.0",
+    "koa-static": "^3.0.0",
+    "koa-views": "^6.0.2",
+    "redis": "^2.7.1"
+  }
+}
