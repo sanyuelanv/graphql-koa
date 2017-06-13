@@ -12,6 +12,10 @@ var _koaViews = require('koa-views');
 
 var _koaViews2 = _interopRequireDefault(_koaViews);
 
+var _koaCsrf = require('koa-csrf');
+
+var _koaCsrf2 = _interopRequireDefault(_koaCsrf);
+
 var _koaStatic = require('koa-static');
 
 var _koaStatic2 = _interopRequireDefault(_koaStatic);
@@ -32,6 +36,10 @@ var _error = require('./func/error');
 
 var _error2 = _interopRequireDefault(_error);
 
+var _redis = require('./func/redis');
+
+var _redis2 = _interopRequireDefault(_redis);
+
 var _router = require('./router');
 
 var _router2 = _interopRequireDefault(_router);
@@ -40,12 +48,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const app = new _koa2.default();
 // 配置session:在配置文件可以改造使用redis还是本地内存
-app.keys = ["sanyue"];
+app.keys = ["sanyue", "csrfSanyue"];
 app.use((0, _koaSession2.default)(_session2.default, app));
 // 配置body解析器：支持json和form表单
 app.use((0, _koaBodyparser2.default)());
 // 配置错误处理
 app.use(_error2.default);
+// csrf
+app.use(new _koaCsrf2.default());
+// redis 缓存
+app.use((0, _redis2.default)('sanyue'));
 // 配置静态文件路径
 app.use((0, _koaStatic2.default)(_view2.default.static)
 // 配置模版文件

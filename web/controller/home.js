@@ -8,6 +8,11 @@ let User = {
     let _token = ctx.cookies.get('_token');
     let views = ctx.session.views || 0;
     ctx.session.views = ++views;
+
+    let res = await ctx.cache.set('token', 456);
+    let value = await ctx.cache.get('token');
+    console.log(value);
+
     if (!_token) {
       ctx.cookies.set('_token', '12345', {
         maxAge: 10 * 60 * 1000, // cookie有效时长
