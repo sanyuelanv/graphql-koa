@@ -26,6 +26,7 @@ const redisCache = (prefix, expire = 86400) => {
   const redisClient = (0, _coRedis2.default)(_redis2.default.createClient(_redis4.default));
   redisClient.on('error', err => {
     redisAvailable = false;
+    console.log(err);
   });
   redisClient.on('end', () => {
     redisAvailable = false;
@@ -64,7 +65,7 @@ const redisCache = (prefix, expire = 86400) => {
     ctx.cache = {
       get: getCache,
       set: setCache,
-      del: removeCache
+      destroy: removeCache
     };
     await next();
   };

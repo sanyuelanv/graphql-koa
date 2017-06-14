@@ -7,10 +7,9 @@
 5. 模版文件：ejs-按照官网例子进行配置
 6. 静态文件处理／上线之后应该交由CDN去处理
 7. cookieParser配置(ctx自带的:npm的cookies模块) / session配置( koa-session / redis)
-8. mysql/redis/mongdb配置
+8. redis/mysql/mongdb配置
 9. 配置bin/www文件
 10. favicon
 
 # todo  
-
 1.

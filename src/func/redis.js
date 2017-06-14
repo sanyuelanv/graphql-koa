@@ -8,7 +8,10 @@ const redisCache = (prefix,expire = 86400) => {
   let redisAvailable = false;
 
   const redisClient = wrapper(Redis.createClient(redisConfig));
-  redisClient.on('error', (err) => {redisAvailable = false;});
+  redisClient.on('error', (err) => {
+    redisAvailable = false;
+    console.log(err);
+  });
   redisClient.on('end', () => {redisAvailable = false;});
   redisClient.on('connect', () => {redisAvailable = true;});
 
@@ -32,7 +35,7 @@ const redisCache = (prefix,expire = 86400) => {
     ctx.cache = {
       get: getCache,
       set: setCache,
-      del: removeCache
+      destroy: removeCache
     };
     await next();
   };

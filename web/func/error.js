@@ -11,6 +11,7 @@ let errorFunc = async (ctx, next) => {
       ctx.body = { message: status };
     }
   } catch (e) {
+    console.log(e);
     ctx.status = e.status || 500;
     ctx.body = { message: e.message };
   }

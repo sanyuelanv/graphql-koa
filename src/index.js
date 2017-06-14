@@ -13,7 +13,7 @@ import router from './router';
 const app = new Koa();
 // 配置session:在配置文件可以改造使用redis还是本地内存
 app.keys = ["sanyue","csrfSanyue"]
-app.use(session(sessionConfig, app));
+// app.use(session(sessionConfig, app));
 // 配置body解析器：支持json和form表单
 app.use(bodyParser());
 // 配置错误处理

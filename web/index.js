@@ -49,7 +49,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const app = new _koa2.default();
 // 配置session:在配置文件可以改造使用redis还是本地内存
 app.keys = ["sanyue", "csrfSanyue"];
-app.use((0, _koaSession2.default)(_session2.default, app));
+// app.use(session(sessionConfig, app));
 // 配置body解析器：支持json和form表单
 app.use((0, _koaBodyparser2.default)());
 // 配置错误处理
