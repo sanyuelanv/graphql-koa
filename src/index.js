@@ -8,7 +8,8 @@ import sessionConfig from './config/session';
 import ViewConfig from './config/view';
 import errorFunc from './func/error';
 import redisCache from './func/redis'
-import router from './router';
+import index from './router/index';
+const router = require('koa-router')();
 
 const app = new Koa();
 // 配置session:在配置文件可以改造使用redis还是本地内存
@@ -27,6 +28,8 @@ app.use(statics(ViewConfig.static))
 // 配置模版文件
 app.use(views(ViewConfig.view, { extension: 'ejs' }));
 // 配置路由
+router.use('/', index.routes(), index.allowedMethods());
 app.use(router.routes()).use(router.allowedMethods());
+
 
 app.listen(3000);
