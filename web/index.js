@@ -12,10 +12,6 @@ var _koaViews = require('koa-views');
 
 var _koaViews2 = _interopRequireDefault(_koaViews);
 
-var _koaCsrf = require('koa-csrf');
-
-var _koaCsrf2 = _interopRequireDefault(_koaCsrf);
-
 var _koaStatic = require('koa-static');
 
 var _koaStatic2 = _interopRequireDefault(_koaStatic);
@@ -40,22 +36,37 @@ var _redis = require('./func/redis');
 
 var _redis2 = _interopRequireDefault(_redis);
 
-var _router = require('./router');
+var _index = require('./router/index');
 
-var _router2 = _interopRequireDefault(_router);
+var _index2 = _interopRequireDefault(_index);
+
+var _koaRouter = require('koa-router');
+
+var _koaRouter2 = _interopRequireDefault(_koaRouter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import csrf from 'koa-csrf';
+const router = new _koaRouter2.default();
+
 const app = new _koa2.default();
+// logger
+app.use(async (ctx, next) => {
+  const start = new Date();
+  await next();
+  const ms = new Date() - start;
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+});
+
 // 配置session:在配置文件可以改造使用redis还是本地内存
 app.keys = ["sanyue", "csrfSanyue"];
-// app.use(session(sessionConfig, app));
+app.use((0, _koaSession2.default)(_session2.default, app));
 // 配置body解析器：支持json和form表单
 app.use((0, _koaBodyparser2.default)());
 // 配置错误处理
 app.use(_error2.default);
 // csrf
-app.use(new _koaCsrf2.default());
+// app.use(new csrf());
 // redis 缓存
 app.use((0, _redis2.default)('sanyue'));
 // 配置静态文件路径
@@ -63,6 +74,11 @@ app.use((0, _koaStatic2.default)(_view2.default.static)
 // 配置模版文件
 );app.use((0, _koaViews2.default)(_view2.default.view, { extension: 'ejs' }));
 // 配置路由
-app.use(_router2.default.routes()).use(_router2.default.allowedMethods());
+router.use('/', _index2.default.routes(), _index2.default.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
+// 处理错误
+app.on('error', err => {
+  console.log(err);
+});
 
 app.listen(3000);

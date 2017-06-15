@@ -1,3 +1,4 @@
+import userModel from '../model/user';
 let User = {
   home:async (ctx) => {
     let _token = ctx.cookies.get('_token');
@@ -6,7 +7,6 @@ let User = {
 
     let res = await ctx.cache.set('token',456)
     let value = await ctx.cache.get('token')
-    console.log(value);
 
     if(!_token){
       ctx.cookies.set(
@@ -21,9 +21,16 @@ let User = {
     }
     await ctx.render('index', {title:views});
   },
-  data:async (ctx) => {
+  list:async (ctx) => {
     const {query} = ctx.request
     let name = query.name
+    // let tagList = await Tag.findAll({
+    //   attributes:['name','tagnumber']
+    // })
+    // let tagArr = tagList.map((item,index)=>{
+    //   return item.get()
+    // })
+    // console.log(tagArr);
     const data = {
       state:200,
       data:[

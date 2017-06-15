@@ -3,6 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _user = require('../model/user');
+
+var _user2 = _interopRequireDefault(_user);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 let User = {
   home: async ctx => {
     let _token = ctx.cookies.get('_token');
@@ -11,7 +18,6 @@ let User = {
 
     let res = await ctx.cache.set('token', 456);
     let value = await ctx.cache.get('token');
-    console.log(value);
 
     if (!_token) {
       ctx.cookies.set('_token', '12345', {
@@ -22,9 +28,16 @@ let User = {
     }
     await ctx.render('index', { title: views });
   },
-  data: async ctx => {
+  list: async ctx => {
     const { query } = ctx.request;
     let name = query.name;
+    // let tagList = await Tag.findAll({
+    //   attributes:['name','tagnumber']
+    // })
+    // let tagArr = tagList.map((item,index)=>{
+    //   return item.get()
+    // })
+    // console.log(tagArr);
     const data = {
       state: 200,
       data: [{ id: 1, name: name }, { id: 2, name: name }, { id: 3, name: name }]
