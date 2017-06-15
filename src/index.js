@@ -1,9 +1,9 @@
 import Koa from "koa";
 import bodyParser from 'koa-bodyparser';
 import views from 'koa-views';
-// import csrf from 'koa-csrf';
 import statics from 'koa-static';
 import session from 'koa-session';
+import csrf from 'koa-csrf';
 import sessionConfig from './config/session';
 import ViewConfig from './config/view';
 import errorFunc from './func/error';
@@ -13,6 +13,7 @@ import Router from "koa-router";
 const router = new Router
 
 const app = new Koa();
+const port = 3000;
 // logger
 app.use(async (ctx, next) => {
   const start = new Date();
@@ -26,10 +27,17 @@ app.keys = ["sanyue","csrfSanyue"]
 app.use(session(sessionConfig, app));
 // 配置body解析器：支持json和form表单
 app.use(bodyParser());
+// CSRF
+app.use(new csrf({
+  invalidSessionSecretMessage: 'Invalid session secret',
+  invalidSessionSecretStatusCode: 403,
+  invalidTokenMessage: 'Invalid CSRF token',
+  invalidTokenStatusCode: 403,
+  excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
+  disableQuery: false
+}));
 // 配置错误处理
 app.use(errorFunc);
-// csrf
-// app.use(new csrf());
 // redis 缓存
 app.use(redisCache('sanyue'));
 // 配置静态文件路径
@@ -45,4 +53,4 @@ app.on('error', (err)=>{
 });
 
 
-app.listen(3000);
+app.listen(process.env.PORT || port);

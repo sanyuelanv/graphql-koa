@@ -20,6 +20,10 @@ var _koaSession = require('koa-session');
 
 var _koaSession2 = _interopRequireDefault(_koaSession);
 
+var _koaCsrf = require('koa-csrf');
+
+var _koaCsrf2 = _interopRequireDefault(_koaCsrf);
+
 var _session = require('./config/session');
 
 var _session2 = _interopRequireDefault(_session);
@@ -46,10 +50,10 @@ var _koaRouter2 = _interopRequireDefault(_koaRouter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import csrf from 'koa-csrf';
 const router = new _koaRouter2.default();
 
 const app = new _koa2.default();
+const port = 3000;
 // logger
 app.use(async (ctx, next) => {
   const start = new Date();
@@ -63,10 +67,17 @@ app.keys = ["sanyue", "csrfSanyue"];
 app.use((0, _koaSession2.default)(_session2.default, app));
 // 配置body解析器：支持json和form表单
 app.use((0, _koaBodyparser2.default)());
+// CSRF
+app.use(new _koaCsrf2.default({
+  invalidSessionSecretMessage: 'Invalid session secret',
+  invalidSessionSecretStatusCode: 403,
+  invalidTokenMessage: 'Invalid CSRF token',
+  invalidTokenStatusCode: 403,
+  excludedMethods: ['GET', 'HEAD', 'OPTIONS'],
+  disableQuery: false
+}));
 // 配置错误处理
 app.use(_error2.default);
-// csrf
-// app.use(new csrf());
 // redis 缓存
 app.use((0, _redis2.default)('sanyue'));
 // 配置静态文件路径
@@ -81,4 +92,4 @@ app.on('error', err => {
   console.log(err);
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || port);

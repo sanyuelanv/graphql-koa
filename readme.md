@@ -10,6 +10,3 @@
 8. redis/mysql/mongdb配置
 9. 配置bin/www文件
 10. favicon
-
-# todo  
-1.

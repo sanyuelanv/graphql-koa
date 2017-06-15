@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dep": "./node_modules/.bin/babel ./src --out-dir ./web -w",
+    "dev": "./node_modules/.bin/babel ./src --out-dir ./web -w",
     "start": "supervisor ./web/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,9 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1"
   },
   "dependencies": {
     "co-redis": "^2.1.1",

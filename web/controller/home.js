@@ -3,13 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _user = require('../model/user');
-
-var _user2 = _interopRequireDefault(_user);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+// import userModel from '../model/user';
 let User = {
   home: async ctx => {
     let _token = ctx.cookies.get('_token');
@@ -31,13 +25,6 @@ let User = {
   list: async ctx => {
     const { query } = ctx.request;
     let name = query.name;
-    // let tagList = await Tag.findAll({
-    //   attributes:['name','tagnumber']
-    // })
-    // let tagArr = tagList.map((item,index)=>{
-    //   return item.get()
-    // })
-    // console.log(tagArr);
     const data = {
       state: 200,
       data: [{ id: 1, name: name }, { id: 2, name: name }, { id: 3, name: name }]

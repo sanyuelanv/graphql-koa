@@ -1,4 +1,4 @@
-import userModel from '../model/user';
+// import userModel from '../model/user';
 let User = {
   home:async (ctx) => {
     let _token = ctx.cookies.get('_token');
@@ -24,13 +24,6 @@ let User = {
   list:async (ctx) => {
     const {query} = ctx.request
     let name = query.name
-    // let tagList = await Tag.findAll({
-    //   attributes:['name','tagnumber']
-    // })
-    // let tagArr = tagList.map((item,index)=>{
-    //   return item.get()
-    // })
-    // console.log(tagArr);
     const data = {
       state:200,
       data:[
