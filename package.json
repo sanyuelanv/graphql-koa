@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/babel ./src --out-dir ./web -w",
+    "dev": "./node_modules/.bin/babel --no-babelrc --plugins transform-es2015-modules-commonjs ./src --out-dir ./web -w",
     "start": "supervisor ./web/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
