@@ -1,14 +1,11 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-const graphql = {
+const testDB = {
   host: '127.0.0.1',
   user: 'root',
   password: '',
-  database: 'graphql',
+  database:'graphql',
   port: 3306
 };
 
-exports.graphql = graphql;
+export {
+  testDB
+}

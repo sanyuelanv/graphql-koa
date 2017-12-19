@@ -1,9 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-let errorFunc = async (ctx, next) => {
+let errorFunc = async (ctx,next)=>{
   try {
     await next();
     const status = ctx.status || 404;
@@ -16,4 +11,4 @@ let errorFunc = async (ctx, next) => {
     ctx.body = { message: e.status };
   }
 };
-exports.default = errorFunc;
+export default errorFunc;

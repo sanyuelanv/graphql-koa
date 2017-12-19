@@ -1,4 +1,4 @@
-create database graphql character set utf8;
+create database test character set utf8;
 CREATE TABLE user(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(45),

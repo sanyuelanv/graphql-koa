@@ -1,31 +1,26 @@
-'use strict';
+import {
+  DataTypes
+} from "sequelize";
+import sequelize from '../func/mysql';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _sequelize = require('sequelize');
-
-var _mysql = require('../func/mysql');
-
-var _mysql2 = _interopRequireDefault(_mysql);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-let User = _mysql2.default.define('user', {
-  id: {
-    type: _sequelize.DataTypes.INTEGER(11),
-    primaryKey: true
+let User = sequelize.define(
+  'user',
+  {
+    id: {
+      type: DataTypes.INTEGER(11),
+      primaryKey: true
+    },
+    name: DataTypes.STRING(45),
+    pw: DataTypes.STRING(45),
+    salt: DataTypes.STRING(45),
+    signTime: DataTypes.STRING(15),
   },
-  name: _sequelize.DataTypes.STRING(45),
-  pw: _sequelize.DataTypes.STRING(45),
-  salt: _sequelize.DataTypes.STRING(45),
-  signTime: _sequelize.DataTypes.STRING(15)
-}, {
-  freezeTableName: true,
-  tableName: 'user',
-  timestamps: false,
-  'createdAt': false
-});
+  {
+    freezeTableName: true,
+    tableName:'user',
+    timestamps: false,
+    'createdAt': false,
+  }
+);
 
-exports.default = User;
+export default User;

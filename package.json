@@ -4,16 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/babel --no-babelrc --plugins transform-es2015-modules-commonjs ./src --out-dir ./web -w",
     "start": "supervisor ./web/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1"
-  },
+  "devDependencies": {},
   "dependencies": {
     "co-redis": "^2.1.1",
     "ejs": "^2.5.6",
