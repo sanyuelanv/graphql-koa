@@ -4,4 +4,4 @@ const redisConfig = {
   //password:'',
   expire:86400,
 }
-export default redisConfig;
+module.exports = redisConfig;

@@ -43,4 +43,4 @@ const redisCache = (prefix,expire = 86400) => {
   return cacheMiddleware;
 };
 
-export default redisCache;
+module.exports = redisCache;

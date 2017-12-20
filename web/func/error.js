@@ -11,4 +11,4 @@ let errorFunc = async (ctx,next)=>{
     ctx.body = { message: e.status };
   }
 };
-export default errorFunc;
+module.exports = errorFunc

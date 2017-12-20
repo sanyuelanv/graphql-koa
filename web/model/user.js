@@ -1,9 +1,7 @@
-import {
-  DataTypes
-} from "sequelize";
-import sequelize from '../func/mysql';
+const {DataTypes} = require('sequelize')
+const {testDB} = require('../func/mysql');
 
-let User = sequelize.define(
+let userModel = testDB.define(
   'user',
   {
     id: {
@@ -22,5 +20,4 @@ let User = sequelize.define(
     'createdAt': false,
   }
 );
-
-export default User;
+module.exports = {userModel}

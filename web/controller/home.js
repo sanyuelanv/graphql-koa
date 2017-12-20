@@ -1,25 +1,8 @@
-// import userModel from '../model/user';
+const {userModel} = require('../model/user');
 let User = {
   home:async (ctx) => {
-    let _token = ctx.cookies.get('_token');
-    let views = ctx.session.views || 0;
-    ctx.session.views = ++views;
-
-    let res = await ctx.cache.set('token',456)
-    let value = await ctx.cache.get('token')
-
-    if(!_token){
-      ctx.cookies.set(
-        '_token',
-        '12345',
-        {
-          maxAge: 10 * 60 * 1000, // cookie有效时长
-          expires: new Date('2017-02-15'),  // cookie失效时间
-          httpOnly: false,  // 是否只用于http请求中获取
-        }
-      );
-    }
-    await ctx.render('index', {title:views});
+    let title = "TEST"
+    await ctx.render('index', {title:title});
   },
   list:async (ctx) => {
     const {query} = ctx.request
@@ -32,7 +15,7 @@ let User = {
         {id:3,name:name},
       ]
     }
-    ctx.body = JSON.stringify(data)
+    ctx.body = data
   },
   post:async (ctx) => {
     const body = ctx.request.body;
@@ -45,7 +28,7 @@ let User = {
         {id:3,name:name},
       ]
     }
-    ctx.body = JSON.stringify(data)
+    ctx.body = data
   },
 }
-export default User
+module.exports = User

@@ -2,10 +2,7 @@ const testDB = {
   host: '127.0.0.1',
   user: 'root',
   password: '',
-  database:'graphql',
+  database:'koaTest',
   port: 3306
 };
-
-export {
-  testDB
-}
+module.exports = {testDB};

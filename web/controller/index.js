@@ -1,4 +1,2 @@
-import Home from './home';
-export{
-  Home,
-}
+const Home = require('./home');
+module.exports = {Home};
