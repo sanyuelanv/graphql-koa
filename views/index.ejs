@@ -8,6 +8,15 @@
   <title>测试</title>
 </head>
 <body>
-  <%= title %>
+  <div class="test"><%= title %></div>
+  <form action="/list" method="get">
+      <input type="text" name="text" value="dsa"  class="testInput" />
+      <input type="submit" value="GET按钮"  class="test" />
+  </form>
+
+  <form action="/post" method="post">
+      <input type="text" name="text" value="dsa"  class="testInput" />
+      <input type="submit" value="POST按钮"  class="test" />
+  </form>
 </body>
 </html>

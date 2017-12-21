@@ -1,4 +1,7 @@
 let errorFunc = async (ctx,next)=>{
+  if(ctx.url == '/'){
+    console.log("-----------执行错误信息中间件");
+  }
   try {
     await next();
     const status = ctx.status || 404;
