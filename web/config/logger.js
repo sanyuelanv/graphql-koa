@@ -1,8 +1,4 @@
 let logger = async (ctx, next) => {
-
-  if(ctx.url == '/'){
-    console.log("-----------执行打印信息中间件1");
-  }
   const start = new Date()
   await next()
   if(ctx.url == '/'){
