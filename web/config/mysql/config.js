@@ -1,14 +1,14 @@
 let host =  '127.0.0.1'
-let password = ''
+let password = '123456'
 let user = "root"
 let port  = 3306
-
-const dbConf = {
+// 数据库名字 ：node_test + Conf
+const node_testConf = {
   host,
   password,
   user,
   port,
-  database:'database',
+  database:'node_test',
 };
 
-module.exports = { dbConf }
+module.exports = { node_testConf }

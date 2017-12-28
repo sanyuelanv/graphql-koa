@@ -9,14 +9,36 @@
 </head>
 <body>
   <div class="test"><%= title %></div>
+  
   <form action="/list" method="get">
-      <input type="text" name="text" value="dsa"  class="testInput" />
-      <input type="submit" value="GET按钮"  class="test" />
+      <input type="submit" value="LIST 按钮"  class="test" />
   </form>
 
-  <form action="/post" method="post">
-      <input type="text" name="text" value="dsa"  class="testInput" />
-      <input type="submit" value="POST按钮"  class="test" />
+
+
+  <form action="/del" method="post">
+      <input type="text" name="id" value=""  class="testInput"  placeholder="ID"/>
+      <input type="submit" value="删"  class="test" />
   </form>
+
+  <form action="/check" method="post">
+      <input type="text" name="id" value=""  class="testInput"  placeholder="ID"/>
+      <input type="submit" value="查"  class="test" />
+  </form>
+
+  <form action="/add" method="post">
+      <input type="text" name="str" value=""  class="testInput" placeholder="str" />
+      <input type="text" name="num" value=""  class="testInput" placeholder="num" />
+      <input type="submit" value="增"  class="test" />
+  </form>
+
+  <form action="/change" method="post">
+      <input type="text" name="id" value=""  class="testInput"  placeholder="ID"/>
+      <input type="text" name="str" value=""  class="testInput" placeholder="str" />
+      <input type="text" name="num" value=""  class="testInput" placeholder="num" />
+      <input type="submit" value="改"  class="test" />
+  </form>
+
+
 </body>
 </html>

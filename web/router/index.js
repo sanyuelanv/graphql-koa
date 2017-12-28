@@ -4,5 +4,8 @@ const {Home} = require('../controller')
 
 router.get('/', Home.home)
 router.get('list', Home.list)
-router.post('post', Home.post)
+router.post('del', Home.del)
+router.post('add', Home.add)
+router.post('change', Home.change)
+router.post('check', Home.check)
 module.exports = router

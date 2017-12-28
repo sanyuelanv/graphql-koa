@@ -1,6 +1,6 @@
 const Redis = require('redis')
 const wrapper = require('co-redis')
-const redisConfig = require('../config/redis')
+const redisConfig = require('./config')
 
 const redisCache = (prefix,expire = 86400) => {
   // expire = expire || 86400;

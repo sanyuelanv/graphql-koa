@@ -5,6 +5,7 @@
 }
 .test{
   padding: 10px;
+  border: 1px solid #ddd;
 }
 .testInput{
   background-color: #f1f1f1;
